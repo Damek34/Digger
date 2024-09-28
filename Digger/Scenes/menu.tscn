@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://ca4lepayx4oiy"]
+
+[ext_resource type="Texture2D" uid="uid://ijyv6o8koysu" path="res://Assets/graphics/backgrounds/menu background.png" id="1_f4gco"]
+[ext_resource type="FontFile" uid="uid://d223nojg0mkop" path="res://Assets/fonts/good times rg.otf" id="2_aa8x0"]
+[ext_resource type="Texture2D" uid="uid://bjp1j2115uc04" path="res://Assets/textures/Stone_01_DIFF.png" id="2_fsg30"]
+[ext_resource type="Script" path="res://Scripts/PlayButton.gd" id="6_ru343"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owho6"]
+texture = ExtResource("2_fsg30")
+modulate_color = Color(0.607843, 0.431373, 0.290196, 0.941176)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j4m17"]
+texture = ExtResource("2_fsg30")
+modulate_color = Color(0.607843, 0.431373, 0.290196, 0.941176)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l2shc"]
+texture = ExtResource("2_fsg30")
+modulate_color = Color(0.607843, 0.431373, 0.290196, 0.941176)
+
+[node name="Menu" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1919.0
+texture = ExtResource("1_f4gco")
+
+[node name="Play" type="Button" parent="Control"]
+modulate = Color(0.439216, 0.439216, 0.439216, 1)
+layout_mode = 0
+offset_top = 1640.0
+offset_right = 1080.0
+offset_bottom = 1920.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_aa8x0")
+theme_override_font_sizes/font_size = 120
+theme_override_styles/normal = SubResource("StyleBoxTexture_owho6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_j4m17")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l2shc")
+text = "PLAY"
+script = ExtResource("6_ru343")
+
+[connection signal="pressed" from="Control/Play" to="Control/Play" method="_on_pressed"]

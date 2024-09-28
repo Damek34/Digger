@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dts52x65ptrdj"]
+
+[ext_resource type="Texture2D" uid="uid://58ualykqy0ta" path="res://Assets/graphics/game_elements/ground/bomb/red-bomb.png" id="1_ufjjo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1jlm"]
+size = Vector2(150, 150)
+
+[node name="Bomb" type="StaticBody2D"]
+light_mask = 3
+scale = Vector2(1.2, 1.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e1jlm")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_ufjjo")

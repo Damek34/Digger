@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8ho5pos3l1wx"]
+
+[ext_resource type="Texture2D" uid="uid://cyt4ma00ggjjs" path="res://Assets/graphics/game_elements/ground/mud.png" id="1_swgdl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1jlm"]
+size = Vector2(150, 150)
+
+[node name="Mud" type="StaticBody2D"]
+light_mask = 3
+scale = Vector2(1.2, 1.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e1jlm")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_swgdl")
