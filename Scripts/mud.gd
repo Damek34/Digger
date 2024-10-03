@@ -1,0 +1,30 @@
+extends StaticBody2D
+
+var pickaxe : RigidBody2D
+
+signal got_damage(damage, pickaxe)
+var hp = 1000
+
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
+@onready var collision_shape_2d = $CollisionShape2D
+@onready var timer = $Timer
+
+	
+func _process(delta):
+	# Sprawdzamy, czy obiekt jest odpowiednio oddalony od pickaxe
+	if pickaxe and global_position.y < pickaxe.global_position.y - 4500:
+		queue_free()
+	
+func _on_got_damage(damage, pickaxe):
+	hp = hp - damage
+	if(hp <= 0):
+		audio_stream_player_2d.play()
+		pickaxe.emit_signal("add_point", 2)
+		visible = false
+		collision_shape_2d.queue_free()
+		timer.start()
+
+
+
+func _on_timer_timeout():
+	queue_free()

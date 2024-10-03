@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=3 uid="uid://2lpldo04tuwq"]
+
+[ext_resource type="Texture2D" uid="uid://cs46fpoyohg88" path="res://Assets/graphics/backgrounds/rocky wall.png" id="1_eesvl"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_txftl"]
+[ext_resource type="PackedScene" uid="uid://dr8hlihuaof51" path="res://Scenes/pickaxe_normal.tscn" id="2_mo8te"]
+[ext_resource type="FontFile" uid="uid://d223nojg0mkop" path="res://Assets/fonts/good times rg.otf" id="3_prjht"]
+[ext_resource type="Script" path="res://Scripts/YouLostOk.gd" id="5_h8mmp"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p5drn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_832pq"]
+bg_color = Color(0.247059, 0.184314, 0.141176, 0.823529)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkp05"]
+bg_color = Color(0.247059, 0.184314, 0.141176, 0.823529)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtfb0"]
+bg_color = Color(0.247059, 0.184314, 0.141176, 0.823529)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7vhf"]
+bg_color = Color(0.247059, 0.184314, 0.141176, 0.823529)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2w23"]
+bg_color = Color(0.247059, 0.184314, 0.141176, 0.823529)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_txftl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0.341176, 0.341176, 0.341176, 1)
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = ExtResource("1_eesvl")
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CanvasLayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_p5drn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D"]
+position = Vector2(1080, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_p5drn")
+
+[node name="Pickaxe" parent="." instance=ExtResource("2_mo8te")]
+position = Vector2(540, 0)
+
+[node name="Camera2D" type="Camera2D" parent="Pickaxe"]
+limit_left = 0
+limit_right = 1080
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="CanvasLayer2"]
+z_index = 10
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -380.0
+offset_right = -33.9996
+offset_bottom = 73.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("3_prjht")
+theme_override_font_sizes/font_size = 60
+text = "Score: 0"
+
+[node name="Depth" type="Label" parent="CanvasLayer2"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_top = 85.0
+offset_right = -41.0
+offset_bottom = 134.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("3_prjht")
+theme_override_font_sizes/font_size = 40
+text = "DEPTH: 0"
+
+[node name="You lost" type="Label" parent="CanvasLayer2"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -72.5
+offset_right = 375.0
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_prjht")
+theme_override_font_sizes/font_size = 120
+text = "You lost"
+
+[node name="OK" type="Button" parent="CanvasLayer2"]
+visible = false
+modulate = Color(0.72549, 0.6, 0.517647, 1)
+self_modulate = Color(0.72549, 0.6, 0.517647, 1)
+offset_top = 1068.0
+offset_right = 1080.0
+offset_bottom = 1294.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_prjht")
+theme_override_font_sizes/font_size = 120
+theme_override_styles/normal = SubResource("StyleBoxFlat_832pq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pkp05")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mtfb0")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7vhf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_r2w23")
+text = "OK
+"
+script = ExtResource("5_h8mmp")
+
+[connection signal="add_point" from="Pickaxe" to="Pickaxe" method="_on_add_point"]
+[connection signal="body_exited" from="Pickaxe" to="Pickaxe" method="_on_body_exited"]
+[connection signal="pressed" from="CanvasLayer2/OK" to="CanvasLayer2/OK" method="_on_pressed"]
