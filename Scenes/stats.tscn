@@ -38,6 +38,7 @@ offset_top = 320.0
 offset_right = 1080.0
 offset_bottom = 1600.0
 color = Color(0, 0, 0, 0.745098)
+metadata/_edit_use_anchors_ = true
 
 [node name="Stats" type="Label" parent="Control/ColorRect"]
 layout_mode = 0
@@ -49,6 +50,7 @@ theme_override_font_sizes/font_size = 100
 text = "STATS
 "
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Back" type="Button" parent="Control/ColorRect"]
 layout_mode = 0
@@ -77,6 +79,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_4rtas")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q28xa")
 text = "X"
 alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="DiggedGold" type="Label" parent="Control/ColorRect"]
 layout_mode = 0
@@ -89,5 +92,6 @@ theme_override_colors/font_outline_color = Color(1, 0.843137, 0, 1)
 theme_override_fonts/font = ExtResource("3_jl216")
 theme_override_font_sizes/font_size = 60
 text = "DIGGED GOLD:"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Control/ColorRect/Back" to="." method="_on_back_pressed"]

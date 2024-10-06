@@ -21,7 +21,7 @@ func _ready():
 
 
 func _on_settings_pressed():
-	pass
+		get_tree().change_scene_to_file("res://Scenes/settings.tscn")
 
 
 func _on_stats_pressed():

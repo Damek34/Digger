@@ -1,0 +1,160 @@
+[gd_scene load_steps=9 format=3 uid="uid://0kjxm6yevg8b"]
+
+[ext_resource type="Script" path="res://Scripts/settings.gd" id="1_snb1i"]
+[ext_resource type="Texture2D" uid="uid://ijyv6o8koysu" path="res://Assets/graphics/backgrounds/menu background.png" id="2_iou22"]
+[ext_resource type="FontFile" uid="uid://d223nojg0mkop" path="res://Assets/fonts/good times rg.otf" id="3_ikljd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7x5g1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8yfi3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vv0xg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mqeqt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5n3r3"]
+
+[node name="Stats" type="Node2D"]
+script = ExtResource("1_snb1i")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1919.0
+texture = ExtResource("2_iou22")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_top = 320.0
+offset_right = 1080.0
+offset_bottom = 1600.0
+color = Color(0, 0, 0, 0.745098)
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="Button" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 952.0
+offset_right = 1080.0
+offset_bottom = 165.0
+theme_override_colors/font_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_colors/font_pressed_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_colors/font_hover_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_colors/font_focus_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_colors/font_disabled_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_colors/font_outline_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_colors/icon_normal_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_colors/icon_pressed_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_colors/icon_hover_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_colors/icon_focus_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_colors/icon_disabled_color = Color(0.443137, 0.407843, 0.427451, 1)
+theme_override_font_sizes/font_size = 120
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7x5g1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8yfi3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vv0xg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mqeqt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5n3r3")
+text = "X"
+
+[node name="SETTINGS" type="Label" parent="Control/ColorRect"]
+layout_mode = 0
+offset_top = 174.0
+offset_right = 1080.0
+offset_bottom = 295.0
+theme_override_fonts/font = ExtResource("3_ikljd")
+theme_override_font_sizes/font_size = 100
+text = "SETTINGS"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Music" type="Label" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.524074
+offset_top = 306.0
+offset_right = 514.0
+offset_bottom = 379.0
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.843137, 0, 1)
+theme_override_fonts/font = ExtResource("3_ikljd")
+theme_override_font_sizes/font_size = 60
+text = "Music"
+metadata/_edit_use_anchors_ = true
+
+[node name="MusicSlider" type="HSlider" parent="Control/ColorRect/Music"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = -11.0
+offset_right = 588.0
+offset_bottom = 89.0
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="SFX" type="Label" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0695312
+anchor_right = 0.524074
+anchor_bottom = 0.0695312
+offset_top = 306.0
+offset_right = 514.0
+offset_bottom = 379.0
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.843137, 0, 1)
+theme_override_fonts/font = ExtResource("3_ikljd")
+theme_override_font_sizes/font_size = 60
+text = "SFX
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="SFX_Slider" type="HSlider" parent="Control/ColorRect/SFX"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = -16.0
+offset_right = 482.0
+offset_bottom = 84.0
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="ShowDiggedGold" type="Label" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.103906
+anchor_right = 0.293519
+anchor_bottom = -0.103906
+offset_top = 617.0
+offset_right = 763.0
+offset_bottom = 690.0
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.843137, 0, 1)
+theme_override_fonts/font = ExtResource("3_ikljd")
+theme_override_font_sizes/font_size = 60
+text = "SHOW DIGGED GOLD:"
+metadata/_edit_use_anchors_ = true
+
+[node name="CheckBox" type="CheckBox" parent="Control/ColorRect/ShowDiggedGold"]
+layout_mode = 0
+offset_left = 771.0
+offset_top = -12.0
+offset_right = 871.0
+offset_bottom = 88.0
+
+[connection signal="pressed" from="Control/ColorRect/Back" to="." method="_on_button_pressed"]
+[connection signal="changed" from="Control/ColorRect/Music/MusicSlider" to="." method="_on_music_slider_changed"]
+[connection signal="drag_ended" from="Control/ColorRect/Music/MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="drag_ended" from="Control/ColorRect/SFX/SFX_Slider" to="." method="_on_sfx_slider_drag_ended"]
