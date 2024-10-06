@@ -11,12 +11,14 @@ var playlist = [
 var current_track_index = 0
 
 func _ready():
+	audio_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	await get_tree().create_timer(4.5).timeout
 	add_child(audio_player)  # Dodaj AudioStreamPlayer do Autoload
 	play_next_track()
 
 func play_next_track():
 	# Odtwórz bieżący utwór z playlisty
+	audio_player.bus = "Music"
 	audio_player.stream = playlist[current_track_index]
 	audio_player.play()
 
