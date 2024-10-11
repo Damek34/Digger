@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://mk6hb318crni"]
+
+[ext_resource type="Script" path="res://Scripts/gold.gd" id="1_e2yq5"]
+[ext_resource type="Texture2D" uid="uid://c4vlpd35y0w1s" path="res://Assets/graphics/game_elements/ground/gold/golden ore block.png" id="2_236od"]
+[ext_resource type="AudioStream" uid="uid://vpps82qgyq40" path="res://Assets/sounds/gold dig.wav" id="3_4sq1i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1jlm"]
+size = Vector2(150, 150)
+
+[node name="Gold" type="StaticBody2D"]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_e2yq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e1jlm")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("2_236od")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4sq1i")
+bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="got_damage" from="." to="." method="_on_got_damage"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

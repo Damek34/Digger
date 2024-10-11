@@ -224,6 +224,7 @@ autoplay = "fade_in"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control/Logo"]
 stream = ExtResource("2_y426j")
 autoplay = true
+bus = &"SFX"
 
 [node name="CHATOYMENT" type="Label" parent="Control"]
 visible = false
