@@ -1,25 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://ca4lepayx4oiy"]
+[gd_scene load_steps=13 format=3 uid="uid://ca4lepayx4oiy"]
 
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_8rc1s"]
 [ext_resource type="Texture2D" uid="uid://ijyv6o8koysu" path="res://Assets/graphics/backgrounds/menu background.png" id="1_f4gco"]
 [ext_resource type="FontFile" uid="uid://d223nojg0mkop" path="res://Assets/fonts/good times rg.otf" id="2_aa8x0"]
-[ext_resource type="Texture2D" uid="uid://bjp1j2115uc04" path="res://Assets/textures/Stone_01_DIFF.png" id="2_fsg30"]
-[ext_resource type="Texture2D" uid="uid://unsmj3jbbkv3" path="res://Assets/graphics/icons/settings icon.png" id="6_f8rfk"]
+[ext_resource type="Texture2D" uid="uid://dqua4tv2dhinc" path="res://Assets/graphics/icons/settings icon.png" id="6_f8rfk"]
 [ext_resource type="Script" path="res://Scripts/PlayButton.gd" id="6_ru343"]
-[ext_resource type="Texture2D" uid="uid://c7ljiffa8a3vf" path="res://Assets/graphics/icons/stats icon.png" id="7_tk7gc"]
+[ext_resource type="Texture2D" uid="uid://bvbjayxhus5xu" path="res://Assets/graphics/icons/play icon.png" id="7_j5ebh"]
+[ext_resource type="Texture2D" uid="uid://dlc5ggx4w7ob" path="res://Assets/graphics/icons/stats icon.png" id="7_tk7gc"]
 [ext_resource type="Texture2D" uid="uid://dq87l3qq588hs" path="res://Assets/graphics/icons/pickaxes shop icon.png" id="8_6t20d"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owho6"]
-texture = ExtResource("2_fsg30")
-modulate_color = Color(0.607843, 0.431373, 0.290196, 0.941176)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j4m17"]
-texture = ExtResource("2_fsg30")
-modulate_color = Color(0.607843, 0.431373, 0.290196, 0.941176)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l2shc"]
-texture = ExtResource("2_fsg30")
-modulate_color = Color(0.607843, 0.431373, 0.290196, 0.941176)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjr2j"]
 
@@ -49,46 +37,18 @@ texture = ExtResource("1_f4gco")
 stretch_mode = 6
 metadata/_edit_use_anchors_ = true
 
-[node name="Play" type="Button" parent="Control"]
-visible = false
-modulate = Color(0.439216, 0.439216, 0.439216, 1)
-layout_mode = 0
-offset_top = 1640.0
-offset_right = 1080.0
-offset_bottom = 1920.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_aa8x0")
-theme_override_font_sizes/font_size = 120
-theme_override_styles/normal = SubResource("StyleBoxTexture_owho6")
-theme_override_styles/hover = SubResource("StyleBoxTexture_j4m17")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_l2shc")
-text = "PLAY"
-script = ExtResource("6_ru343")
-
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 0
-offset_top = 320.0
 offset_right = 1080.0
-offset_bottom = 1600.0
+offset_bottom = 1920.0
 color = Color(0, 0, 0, 0.745098)
 
 [node name="Highscore" type="Label" parent="Control/ColorRect"]
 modulate = Color(0, 0.905882, 0.905882, 1)
 layout_mode = 0
-offset_top = 25.0
+offset_top = 372.0
 offset_right = 1080.0
-offset_bottom = 170.0
+offset_bottom = 517.0
 theme_override_fonts/font = ExtResource("2_aa8x0")
 theme_override_font_sizes/font_size = 80
 text = "Highscore:"
@@ -99,19 +59,75 @@ vertical_alignment = 1
 modulate = Color(0, 1, 0.180392, 1)
 layout_mode = 0
 offset_left = 3.0
-offset_top = 140.0
+offset_top = 487.0
 offset_right = 1083.0
-offset_bottom = 285.0
+offset_bottom = 632.0
 theme_override_fonts/font = ExtResource("2_aa8x0")
 theme_override_font_sizes/font_size = 120
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play2" type="Button" parent="Control/ColorRect"]
+[node name="Settings" type="TextureButton" parent="Control/ColorRect"]
 layout_mode = 0
-offset_top = 998.0
+offset_left = 30.0
+offset_top = 1042.0
+offset_right = 730.0
+offset_bottom = 1742.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("6_f8rfk")
+texture_pressed = ExtResource("6_f8rfk")
+texture_hover = ExtResource("6_f8rfk")
+texture_disabled = ExtResource("6_f8rfk")
+texture_focused = ExtResource("6_f8rfk")
+stretch_mode = 5
+
+[node name="Stats" type="TextureButton" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 1137.0
+offset_right = 1103.0
+offset_bottom = 1837.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("7_tk7gc")
+texture_pressed = ExtResource("7_tk7gc")
+texture_hover = ExtResource("7_tk7gc")
+texture_disabled = ExtResource("7_tk7gc")
+texture_focused = ExtResource("7_tk7gc")
+stretch_mode = 5
+
+[node name="PickaxeShop" type="TextureButton" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 1038.0
+offset_right = 1458.0
+offset_bottom = 1738.0
+scale = Vector2(0.42, 0.42)
+texture_normal = ExtResource("8_6t20d")
+texture_pressed = ExtResource("8_6t20d")
+texture_hover = ExtResource("8_6t20d")
+texture_disabled = ExtResource("8_6t20d")
+texture_focused = ExtResource("8_6t20d")
+stretch_mode = 5
+
+[node name="Play" type="TextureButton" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 671.0
+offset_right = 980.0
+offset_bottom = 1371.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("7_j5ebh")
+texture_pressed = ExtResource("7_j5ebh")
+texture_hover = ExtResource("7_j5ebh")
+texture_disabled = ExtResource("7_j5ebh")
+texture_focused = ExtResource("7_j5ebh")
+script = ExtResource("6_ru343")
+
+[node name="Play2" type="Button" parent="."]
+visible = false
+offset_top = 2316.0
 offset_right = 1080.0
-offset_bottom = 1278.0
+offset_bottom = 2596.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -132,51 +148,35 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_v3w22")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lnlfl")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_tfoug")
 text = "PLAY"
-script = ExtResource("6_ru343")
 
-[node name="Settings" type="TextureButton" parent="Control/ColorRect"]
-layout_mode = 0
-offset_left = 128.0
-offset_top = 400.0
-offset_right = 828.0
-offset_bottom = 1100.0
-scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("6_f8rfk")
-texture_pressed = ExtResource("6_f8rfk")
-texture_hover = ExtResource("6_f8rfk")
-texture_disabled = ExtResource("6_f8rfk")
-texture_focused = ExtResource("6_f8rfk")
-stretch_mode = 5
+[node name="Play3" type="Button" parent="."]
+visible = false
+offset_top = 1318.0
+offset_right = 1080.0
+offset_bottom = 1598.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_aa8x0")
+theme_override_font_sizes/font_size = 120
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pjr2j")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_v3w22")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lnlfl")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tfoug")
+text = "PLAY"
 
-[node name="Stats" type="TextureButton" parent="Control/ColorRect"]
-layout_mode = 0
-offset_left = 408.0
-offset_top = 680.0
-offset_right = 1108.0
-offset_bottom = 1380.0
-scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("7_tk7gc")
-texture_pressed = ExtResource("7_tk7gc")
-texture_hover = ExtResource("7_tk7gc")
-texture_disabled = ExtResource("7_tk7gc")
-texture_focused = ExtResource("7_tk7gc")
-stretch_mode = 5
-
-[node name="PickaxeShop" type="TextureButton" parent="Control/ColorRect"]
-layout_mode = 0
-offset_left = 688.0
-offset_top = 400.0
-offset_right = 1388.0
-offset_bottom = 1100.0
-scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("8_6t20d")
-texture_pressed = ExtResource("8_6t20d")
-texture_hover = ExtResource("8_6t20d")
-texture_disabled = ExtResource("8_6t20d")
-texture_focused = ExtResource("8_6t20d")
-stretch_mode = 5
-
-[connection signal="pressed" from="Control/Play" to="Control/Play" method="_on_pressed"]
-[connection signal="pressed" from="Control/ColorRect/Play2" to="Control/ColorRect/Play2" method="_on_pressed"]
 [connection signal="pressed" from="Control/ColorRect/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Control/ColorRect/Stats" to="." method="_on_stats_pressed"]
+[connection signal="pressed" from="Control/ColorRect/Play" to="Control/ColorRect/Play" method="_on_pressed"]
+[connection signal="pressed" from="Play2" to="Play2" method="_on_pressed"]
+[connection signal="pressed" from="Play3" to="Play3" method="_on_pressed"]

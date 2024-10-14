@@ -23,6 +23,7 @@ var physics_material: PhysicsMaterial
 @onready var camera_2d = $Camera2D
 var score_number = 0
 var highscore
+var highest_pickaxe_y
 
 
 func _ready():
@@ -33,11 +34,16 @@ func _ready():
 	physics_material.friction = 0.4 
 	
 	physics_material_override = physics_material
+	
+	highest_pickaxe_y = floor((pickaxe_normal.global_position.y) / 80)
 
 func _process(delta):
-	depth.text = "DEPTH: " + str(floor((pickaxe_normal.global_position.y) / 30))
+	depth.text = "DEPTH: " + str(floor((pickaxe_normal.global_position.y) / 80))
 	label_count_gold.text = str(gold_number)
 	label_count_diamond.text = str(diamond_number)
+	
+	if floor((pickaxe_normal.global_position.y) / 80) > highest_pickaxe_y:
+		highest_pickaxe_y = floor((pickaxe_normal.global_position.y) / 80)
 
 
 
@@ -88,11 +94,14 @@ func readHighscore():
 		highscore = config.get_value("game", "highscore", 0) 
 		var total_gold = config.get_value("game", "total_gold", 0)
 		var total_diamonds = config.get_value("game", "total_diamonds", 0)
+		var max_depth = config.get_value("game", "max_depth", 0)
 		
 		saveMinerals(total_gold, total_diamonds)
 		
 		if score_number > highscore:
 			saveHighscore()
+		if highest_pickaxe_y > max_depth:
+			saveMaxDepth()
 	else:
 		highscore = 0
 
@@ -122,3 +131,12 @@ func saveMinerals(total_gold, total_diamonds):
 	config.save("user://settings.cfg")
 	#print("Zapisano diamenty:", total_diamonds + diamond_number)
 	
+func saveMaxDepth():
+	var config = ConfigFile.new()
+	var err = config.load("user://settings.cfg")
+	if err != OK:
+		print("Nie udało się otworzyć pliku konfiguracyjnego.")
+	
+	config.set_value("game", "max_depth", highest_pickaxe_y)
+	
+	config.save("user://settings.cfg")

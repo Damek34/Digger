@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpv2jwx2jw7tj"]
 
 [ext_resource type="Script" path="res://Scripts/Stats.gd" id="1_u63sc"]
-[ext_resource type="Texture2D" uid="uid://ijyv6o8koysu" path="res://Assets/graphics/backgrounds/menu background.png" id="2_gcjdk"]
+[ext_resource type="Texture2D" uid="uid://gss2nr5uv4na" path="res://Assets/graphics/backgrounds/stats background.png" id="2_1k6vv"]
 [ext_resource type="FontFile" uid="uid://d223nojg0mkop" path="res://Assets/fonts/good times rg.otf" id="3_jl216"]
 [ext_resource type="Texture2D" uid="uid://r7wvlju7fjyl" path="res://Assets/graphics/icons/X mark for back red.png" id="4_24agq"]
 
@@ -20,11 +20,15 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 1919.0
-texture = ExtResource("2_gcjdk")
+texture = ExtResource("2_1k6vv")
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 0
+self_modulate = Color(1, 1, 1, 0.831373)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -8.0
+anchor_bottom = 8.0
 offset_top = 320.0
 offset_right = 1080.0
 offset_bottom = 1600.0
@@ -48,7 +52,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.87037
 anchor_right = 0.87037
-offset_right = 100.0
+offset_right = 99.9999
 offset_bottom = 100.0
 scale = Vector2(1.4, 1.4)
 texture_normal = ExtResource("4_24agq")
@@ -64,8 +68,9 @@ anchors_preset = -1
 anchor_top = 0.258594
 anchor_bottom = 0.258594
 offset_left = 8.0
+offset_top = 182.5
 offset_right = 522.0
-offset_bottom = 73.0
+offset_bottom = 255.5
 theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 0.843137, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0.843137, 0, 1)
@@ -81,15 +86,53 @@ anchor_left = 0.00740741
 anchor_top = 0.404687
 anchor_right = 0.00740741
 anchor_bottom = 0.404687
-offset_top = -98.0
+offset_top = 85.001
 offset_right = 717.0
-offset_bottom = -25.0
+offset_bottom = 158.001
 theme_override_colors/font_color = Color(0.72549, 0.94902, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.105882, 0.0431373, 0.768627, 1)
 theme_override_colors/font_outline_color = Color(0.105882, 0.0431373, 0.768627, 1)
 theme_override_fonts/font = ExtResource("3_jl216")
 theme_override_font_sizes/font_size = 60
 text = "DIGGED DIAMONDS:"
+metadata/_edit_use_anchors_ = true
+
+[node name="Highscore" type="Label" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0212963
+anchor_top = 0.183397
+anchor_right = 0.0212963
+anchor_bottom = 0.183397
+offset_left = -15.0
+offset_top = -39.1226
+offset_right = 499.0
+offset_bottom = 33.8774
+theme_override_colors/font_color = Color(0, 0.905882, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.905882, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.905882, 0, 1)
+theme_override_fonts/font = ExtResource("3_jl216")
+theme_override_font_sizes/font_size = 60
+text = "HIGHSCORE:"
+metadata/_edit_use_anchors_ = true
+
+[node name="DeepestHeight" type="Label" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0212963
+anchor_top = 0.183397
+anchor_right = 0.0212963
+anchor_bottom = 0.183397
+offset_left = -15.0
+offset_top = 143.877
+offset_right = 600.0
+offset_bottom = 216.877
+theme_override_colors/font_color = Color(0, 0.333333, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.333333, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.333333, 1, 1)
+theme_override_fonts/font = ExtResource("3_jl216")
+theme_override_font_sizes/font_size = 60
+text = "DEEPEST HEIGHT:"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Control/ColorRect/Back" to="." method="_on_back_pressed"]

@@ -115,6 +115,7 @@ step = 0.0
 value = 1.0
 
 [node name="MusicSlider" type="HSlider" parent="Control/ColorRect/Music"]
+layout_mode = 0
 offset_left = 266.0
 offset_top = -9.99994
 offset_right = 566.0
