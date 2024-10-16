@@ -12,12 +12,13 @@ config_version=5
 
 config/name="Digger"
 run/main_scene="res://Scenes/loading_screen.tscn"
-config/features=PackedStringArray("4.2", "Mobile")
+config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://Assets/graphics/icons/pickaxe2e.png"
 
 [autoload]
 
 MusicManager="*res://Scripts/MusicManager.gd"
+Globals="*res://Scripts/Globals.gd"
 
 [display]
 

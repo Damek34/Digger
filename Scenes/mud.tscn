@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8ho5pos3l1wx"]
 
 [ext_resource type="Script" path="res://Scripts/mud.gd" id="1_vjend"]
-[ext_resource type="Texture2D" uid="uid://cyt4ma00ggjjs" path="res://Assets/graphics/game_elements/ground/mud/mud.png" id="2_8dk14"]
+[ext_resource type="Texture2D" uid="uid://cyt4ma00ggjjs" path="res://Assets/graphics/game_elements/ground/mud.png" id="2_8dk14"]
 [ext_resource type="AudioStream" uid="uid://eoub3bx44wu4" path="res://Assets/sounds/dig.wav" id="3_vl5le"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1jlm"]

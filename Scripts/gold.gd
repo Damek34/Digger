@@ -3,7 +3,7 @@ extends StaticBody2D
 var pickaxe : RigidBody2D
 
 signal got_damage(damage, pickaxe)
-var hp = 3400
+var hp = 4000
 
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var collision_shape_2d = $CollisionShape2D
@@ -13,7 +13,6 @@ var hp = 3400
 func _ready():
 	audio_stream_player_2d.process_mode = Node.PROCESS_MODE_ALWAYS
 func _process(delta):
-	# Sprawdzamy, czy obiekt jest odpowiednio oddalony od pickaxe
 	if pickaxe != null and pickaxe and global_position.y < pickaxe.global_position.y - 4500:
 		queue_free()
 	
