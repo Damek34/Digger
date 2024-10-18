@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://0kjxm6yevg8b"]
+[gd_scene load_steps=20 format=3 uid="uid://0kjxm6yevg8b"]
 
 [ext_resource type="Script" path="res://Scripts/settings.gd" id="1_snb1i"]
-[ext_resource type="Texture2D" uid="uid://ijyv6o8koysu" path="res://Assets/graphics/backgrounds/menu background.png" id="2_iou22"]
+[ext_resource type="Texture2D" uid="uid://dvqlb8qb1xn1o" path="res://Assets/graphics/backgrounds/settings background.png" id="2_pieql"]
 [ext_resource type="FontFile" uid="uid://d223nojg0mkop" path="res://Assets/fonts/good times rg.otf" id="3_ikljd"]
 [ext_resource type="Texture2D" uid="uid://r7wvlju7fjyl" path="res://Assets/graphics/icons/X mark for back red.png" id="3_ueyvf"]
 [ext_resource type="Texture2D" uid="uid://ca1d53c4k58au" path="res://Assets/graphics/icons/check mark.png" id="4_rw7rf"]
@@ -12,6 +12,12 @@
 [sub_resource type="MeshTexture" id="MeshTexture_tenci"]
 
 [sub_resource type="MeshTexture" id="MeshTexture_en7xq"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_rvggj"]
+color = Color(1, 1, 1, 0.698039)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iem4"]
 bg_color = Color(0, 1, 0, 1)
@@ -30,6 +36,12 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_j8mn5"]
+color = Color(1, 1, 1, 0.698039)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 15
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_asbu8"]
 
@@ -58,14 +70,17 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 1919.0
-texture = ExtResource("2_iou22")
+texture = ExtResource("2_pieql")
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 0
-offset_top = 320.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -7.975
+anchor_bottom = 7.975
+offset_top = 319.0
 offset_right = 1080.0
-offset_bottom = 1600.0
+offset_bottom = 1601.0
 color = Color(0, 0, 0, 0.745098)
 metadata/_edit_use_anchors_ = true
 
@@ -123,6 +138,7 @@ offset_bottom = 90.0001
 theme_override_icons/grabber = SubResource("MeshTexture_egn68")
 theme_override_icons/grabber_highlight = SubResource("MeshTexture_tenci")
 theme_override_icons/grabber_disabled = SubResource("MeshTexture_en7xq")
+theme_override_styles/slider = SubResource("StyleBoxLine_rvggj")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0iem4")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4dn55")
 max_value = 1.0
@@ -135,9 +151,9 @@ anchors_preset = -1
 anchor_top = 0.0695312
 anchor_right = 0.524074
 anchor_bottom = 0.0695312
-offset_top = 306.0
+offset_top = 306.639
 offset_right = 514.0
-offset_bottom = 379.0
+offset_bottom = 379.639
 theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 0.843137, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0.843137, 0, 1)
@@ -156,6 +172,7 @@ offset_bottom = 90.0001
 theme_override_icons/grabber = SubResource("MeshTexture_egn68")
 theme_override_icons/grabber_highlight = SubResource("MeshTexture_tenci")
 theme_override_icons/grabber_disabled = SubResource("MeshTexture_en7xq")
+theme_override_styles/slider = SubResource("StyleBoxLine_j8mn5")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0iem4")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4dn55")
 max_value = 1.0
@@ -165,25 +182,25 @@ value = 1.0
 [node name="ShowDiggedBlocks" type="Label" parent="Control/ColorRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.103906
+anchor_top = -0.0286757
 anchor_right = 0.293519
-anchor_bottom = -0.103906
-offset_top = 617.0
+anchor_bottom = -0.0286757
+offset_top = 629.0
 offset_right = 763.0
-offset_bottom = 690.0
+offset_bottom = 702.0
 theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 0.843137, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0.843137, 0, 1)
 theme_override_fonts/font = ExtResource("3_ikljd")
 theme_override_font_sizes/font_size = 60
-text = "SHOW DIGGED GOLD:"
+text = "SHOW DIGGED BLOCKS:"
 metadata/_edit_use_anchors_ = true
 
 [node name="CheckBox" type="CheckBox" parent="Control/ColorRect/ShowDiggedBlocks"]
 layout_mode = 0
-offset_left = 771.0
+offset_left = 876.0
 offset_top = -12.0
-offset_right = 871.0
+offset_right = 976.0
 offset_bottom = 88.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_asbu8")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_fjl3p")

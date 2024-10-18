@@ -6,25 +6,49 @@ extends Node2D
 @onready var deepest_height = $Control/ColorRect/DeepestHeight
 
 func _ready():
-	var config = ConfigFile.new()
-	
-	var err = config.load("user://settings.cfg")
-	if err == OK:
-		var highscore = config.get_value("game", "highscore", 0)
-		var gold = config.get_value("game", "total_gold", 0)
-		var diamonds = config.get_value("game", "total_diamonds", 0)
-		var max_depth = config.get_value("game", "max_depth", 0)
+	if FileAccess.file_exists(Globals.SAVE_FILE):
+		var file = FileAccess.open(Globals.SAVE_FILE, FileAccess.READ)
 		
-		highscore_label.text = highscore_label.text + " " + str(highscore)
-		deepest_height.text = deepest_height.text + " " + str(max_depth)
-		digged_gold.text = digged_gold.text + " " + str(gold)
-		digged_diamonds.text = digged_diamonds.text + " " + str(diamonds)
+		# Sprawdź, czy plik jest otwarty
+		if file.is_open():
+			var game_data = file.get_var()
+			file.close()
+			
+			# Sprawdź, czy uzyskane dane są prawidłowe
+			var highscore = game_data.get("highscore", 0)
+			var max_depth = game_data.get("max_depth", 0)
+			var total_gold = game_data.get("total_gold", 0)
+			var total_diamonds = game_data.get("total_diamonds", 0)
+			
+			
+			highscore_label.text = highscore_label.text + " " + str(highscore)
+			deepest_height.text = deepest_height.text + " " + str(max_depth)
+			digged_gold.text = digged_gold.text + " " + str(total_gold)
+			digged_diamonds.text = digged_diamonds.text + " " + str(total_diamonds)
+		else:
+			print("Nie udało się otworzyć pliku do odczytu.")
+			digged_gold.text = digged_gold.text + " " + str(0)
+			digged_diamonds.text = digged_diamonds.text + " " + str(0)
+			highscore_label.text = highscore_label.text + " " + str(0)
+			deepest_height.text = deepest_height.text + " " + str(0)
 	else:
+		print("Plik zapisu nie istnieje, używamy wartości domyślnych.")
 		digged_gold.text = digged_gold.text + " " + str(0)
 		digged_diamonds.text = digged_diamonds.text + " " + str(0)
 		highscore_label.text = highscore_label.text + " " + str(0)
 		deepest_height.text = deepest_height.text + " " + str(0)
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 func _on_back_pressed():

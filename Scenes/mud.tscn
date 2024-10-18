@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8ho5pos3l1wx"]
 
 [ext_resource type="Script" path="res://Scripts/mud.gd" id="1_vjend"]
-[ext_resource type="Texture2D" uid="uid://cyt4ma00ggjjs" path="res://Assets/graphics/game_elements/ground/mud.png" id="2_8dk14"]
+[ext_resource type="Texture2D" uid="uid://cyt4ma00ggjjs" path="res://Assets/graphics/game_elements/ground/mud block/mud.png" id="2_55505"]
 [ext_resource type="AudioStream" uid="uid://eoub3bx44wu4" path="res://Assets/sounds/dig.wav" id="3_vl5le"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1jlm"]
@@ -16,7 +16,7 @@ script = ExtResource("1_vjend")
 shape = SubResource("RectangleShape2D_e1jlm")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-texture = ExtResource("2_8dk14")
+texture = ExtResource("2_55505")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_vl5le")

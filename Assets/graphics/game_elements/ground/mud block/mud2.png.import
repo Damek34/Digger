@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyt4ma00ggjjs"
-path="res://.godot/imported/mud.png-2f78a492f8eb22b12fcc694c345d4dc4.ctex"
+uid="uid://cdskh3ojl6pye"
+path="res://.godot/imported/mud2.png-03c74f30325f90d943695d8601813ce0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/graphics/game_elements/ground/mud/mud.png"
-dest_files=["res://.godot/imported/mud.png-2f78a492f8eb22b12fcc694c345d4dc4.ctex"]
+source_file="res://Assets/graphics/game_elements/ground/mud block/mud2.png"
+dest_files=["res://.godot/imported/mud2.png-03c74f30325f90d943695d8601813ce0.ctex"]
 
 [params]
 

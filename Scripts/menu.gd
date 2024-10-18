@@ -3,15 +3,28 @@ extends Node2D
 @onready var my_highcore = $Control/ColorRect/MyHighcore
 
 func _ready():
-	var config = ConfigFile.new()
-	
-	var err = config.load("user://settings.cfg")
-	if err == OK:
-		var highscore = config.get_value("game", "highscore", 0) 
-		my_highcore.text = str(highscore)
-		return highscore
+	if FileAccess.file_exists(Globals.SAVE_FILE):
+		var file = FileAccess.open(Globals.SAVE_FILE, FileAccess.READ)
+		
+		# Sprawdź, czy plik jest otwarty
+		if file.is_open():
+			var game_data = file.get_var()
+			file.close()
+			
+			# Sprawdź, czy uzyskane dane są prawidłowe
+			var highscore = game_data.get("highscore", 0)
+			
+			# Zapisz dane, korzystając z uzyskanych wartości
+			my_highcore.text = str(highscore)
+			
+		else:
+			print("Nie udało się otworzyć pliku do odczytu.")
 	else:
+		print("Plik zapisu nie istnieje, używamy wartości domyślnych.")
 		my_highcore.text = str(0)
+	
+	
+	
 
 
 func _on_settings_pressed():

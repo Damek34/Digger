@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdskh3ojl6pye"
-path="res://.godot/imported/mud2.png-7f20038fa2a060b3bb768f7873c8c7a6.ctex"
+uid="uid://dvqlb8qb1xn1o"
+path="res://.godot/imported/settings background.png-e1512fa2e9792c40fa3d4aec3a321a68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/graphics/game_elements/ground/mud/mud2.png"
-dest_files=["res://.godot/imported/mud2.png-7f20038fa2a060b3bb768f7873c8c7a6.ctex"]
+source_file="res://Assets/graphics/backgrounds/settings background.png"
+dest_files=["res://.godot/imported/settings background.png-e1512fa2e9792c40fa3d4aec3a321a68.ctex"]
 
 [params]
 

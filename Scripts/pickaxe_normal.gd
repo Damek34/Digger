@@ -77,7 +77,7 @@ func _on_area_2d_body_entered(body):
 		body.emit_signal("explode")
 		you_lost.visible = true
 		ok.visible = true
-		readHighscore()
+		loadData()
 		get_tree().paused = true
 
 func _on_add_point(number):
@@ -85,58 +85,55 @@ func _on_add_point(number):
 	score.text = "Score: " + str(score_number)
 
 
-func readHighscore():
-	var config = ConfigFile.new()
-	
-	var err = config.load("user://settings.cfg")
-	if err == OK:
+
+func loadData():
+	if FileAccess.file_exists(Globals.SAVE_FILE):
+		var file = FileAccess.open(Globals.SAVE_FILE, FileAccess.READ)
 		
-		highscore = config.get_value("game", "highscore", 0) 
-		var total_gold = config.get_value("game", "total_gold", 0)
-		var total_diamonds = config.get_value("game", "total_diamonds", 0)
-		var max_depth = config.get_value("game", "max_depth", 0)
-		
-		saveMinerals(total_gold, total_diamonds)
-		
-		if score_number > highscore:
-			saveHighscore()
-		if highest_pickaxe_y > max_depth:
-			saveMaxDepth()
+		# Sprawdź, czy plik jest otwarty
+		if file.is_open():
+			var game_data = file.get_var()
+			file.close()
+			
+			# Sprawdź, czy uzyskane dane są prawidłowe
+			var highscore = game_data.get("highscore", 0)
+			var max_depth = game_data.get("max_depth", 0)
+			var total_gold = game_data.get("total_gold", 0)
+			var total_diamonds = game_data.get("total_diamonds", 0)
+			
+			# Zapisz dane, korzystając z uzyskanych wartości
+			save(highscore, max_depth, total_gold, total_diamonds)
+		else:
+			print("Nie udało się otworzyć pliku do odczytu.")
 	else:
-		highscore = 0
+		print("Plik zapisu nie istnieje, używamy wartości domyślnych.")
+		save(0, 0, 0, 0)  # Użyj domyślnych wartości, jeśli plik nie istnieje
 
+func save(highscore, max_depth, total_gold, total_diamonds):
+	var game_data = {}
+	
+	# Sprawdzamy, czy nowe wartości są większe niż te istniejące i aktualizujemy dane
+	if score_number > highscore:
+		game_data["highscore"] = score_number
+	else:
+		game_data["highscore"] = highscore
 
-
-func saveHighscore():
-	var config = ConfigFile.new()
-	var err = config.load("user://settings.cfg")
-	if err != OK:
-		print("Nie udało się otworzyć pliku konfiguracyjnego.")
+	if highest_pickaxe_y > max_depth:
+		game_data["max_depth"] = highest_pickaxe_y
+	else:
+		game_data["max_depth"] = max_depth
 	
-	config.set_value("game", "highscore", score_number)
-	
-	config.save("user://settings.cfg")
+	game_data["total_gold"] = total_gold + gold_number
+	game_data["total_diamonds"] = total_diamonds + diamond_number
 	
 	
-
-func saveMinerals(total_gold, total_diamonds):
-	var config = ConfigFile.new()
-	var err = config.load("user://settings.cfg")
-	if err != OK:
-		print("Nie udało się otworzyć pliku konfiguracyjnego.")
+	# Zapisz dane do pliku
+	var file = FileAccess.open(Globals.SAVE_FILE, FileAccess.WRITE)
 	
-	config.set_value("game", "total_gold", total_gold + gold_number)
-	config.set_value("game", "total_diamonds", total_diamonds + diamond_number)
-	
-	config.save("user://settings.cfg")
-	#print("Zapisano diamenty:", total_diamonds + diamond_number)
-	
-func saveMaxDepth():
-	var config = ConfigFile.new()
-	var err = config.load("user://settings.cfg")
-	if err != OK:
-		print("Nie udało się otworzyć pliku konfiguracyjnego.")
-	
-	config.set_value("game", "max_depth", highest_pickaxe_y)
-	
-	config.save("user://settings.cfg")
+	# Sprawdzenie, czy plik został otwarty
+	if file.is_open():
+		file.store_var(game_data)
+		file.close()
+		print("Dane zapisane pomyślnie.")
+	else:
+		print("Nie udało się otworzyć pliku do zapisu.")
