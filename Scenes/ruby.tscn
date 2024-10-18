@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpvqatiy582tf"]
+
+[ext_resource type="Script" path="res://Scripts/ruby.gd" id="1_jvdxh"]
+[ext_resource type="Texture2D" uid="uid://hvdfl7krs682" path="res://Assets/graphics/game_elements/ground/ruby/ruby ore block.png" id="1_nf6t1"]
+[ext_resource type="AudioStream" uid="uid://t2ok8kikntn7" path="res://Assets/sounds/diamond dig.wav" id="2_j4nyn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knjlw"]
+size = Vector2(150, 150)
+
+[node name="Ruby" type="StaticBody2D"]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_jvdxh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_knjlw")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_nf6t1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_j4nyn")
+bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="got_damage" from="." to="." method="_on_got_damage"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

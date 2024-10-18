@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://2lpldo04tuwq"]
+[gd_scene load_steps=18 format=3 uid="uid://2lpldo04tuwq"]
 
 [ext_resource type="Texture2D" uid="uid://cs46fpoyohg88" path="res://Assets/graphics/backgrounds/rocky wall.png" id="1_eesvl"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_txftl"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://d223nojg0mkop" path="res://Assets/fonts/good times rg.otf" id="3_prjht"]
 [ext_resource type="Texture2D" uid="uid://c4vlpd35y0w1s" path="res://Assets/graphics/game_elements/ground/gold/golden ore block.png" id="4_c55xk"]
 [ext_resource type="Script" path="res://Scripts/YouLostOk.gd" id="5_h8mmp"]
+[ext_resource type="Texture2D" uid="uid://hvdfl7krs682" path="res://Assets/graphics/game_elements/ground/ruby/ruby ore block.png" id="6_cerom"]
 [ext_resource type="Texture2D" uid="uid://bjp1j2115uc04" path="res://Assets/textures/Stone_01_DIFF.png" id="8_pikwn"]
 [ext_resource type="Script" path="res://Scripts/WarningTextureRect.gd" id="8_s20ty"]
 [ext_resource type="Texture2D" uid="uid://43pdfwq6tow5" path="res://Assets/graphics/game_elements/ground/diamond/diamond ore.png" id="10_20ckf"]
@@ -79,12 +80,31 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="DiamondOreBlock" type="Sprite2D" parent="CanvasLayer2/GoldenOreBlock"]
+[node name="RubyOreBlock" type="Sprite2D" parent="CanvasLayer2"]
 modulate = Color(1, 1, 1, 0.54902)
-position = Vector2(428.125, 0)
+position = Vector2(385, 40)
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("6_cerom")
+
+[node name="LabelCountRuby" type="Label" parent="CanvasLayer2/RubyOreBlock"]
+offset_left = -34.0
+offset_top = 75.0
+offset_right = 33.0
+offset_bottom = 172.0
+theme_override_fonts/font = ExtResource("3_prjht")
+theme_override_font_sizes/font_size = 80
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="DiamondOreBlock" type="Sprite2D" parent="CanvasLayer2"]
+modulate = Color(1, 1, 1, 0.54902)
+position = Vector2(522, 40)
+scale = Vector2(0.32, 0.32)
 texture = ExtResource("10_20ckf")
 
-[node name="LabelCountDiamond" type="Label" parent="CanvasLayer2/GoldenOreBlock/DiamondOreBlock"]
+[node name="LabelCountDiamond" type="Label" parent="CanvasLayer2/DiamondOreBlock"]
 offset_left = -34.0
 offset_top = 75.0
 offset_right = 33.0

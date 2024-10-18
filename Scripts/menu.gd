@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var my_highcore = $Control/ColorRect/MyHighcore
+@onready var play: TextureButton = $Control/ColorRect/Play
 
 func _ready():
 	if FileAccess.file_exists(Globals.SAVE_FILE):

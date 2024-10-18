@@ -4,6 +4,7 @@ signal add_point(number)
 
 var gold_number : int
 var diamond_number : int
+var ruby_number: int
 
 
 var throw_force = 1200  # Siła rzutu, dostosuj według potrzeb
@@ -14,7 +15,8 @@ var throw_force = 1200  # Siła rzutu, dostosuj według potrzeb
 @onready var you_lost = $"../CanvasLayer2/You lost"
 @onready var ok = $"../CanvasLayer2/OK"
 @onready var label_count_gold = $"../CanvasLayer2/GoldenOreBlock/LabelCountGold"
-@onready var label_count_diamond = $"../CanvasLayer2/GoldenOreBlock/DiamondOreBlock/LabelCountDiamond"
+@onready var label_count_diamond: Label = $"../CanvasLayer2/DiamondOreBlock/LabelCountDiamond"
+@onready var label_count_ruby: Label = $"../CanvasLayer2/RubyOreBlock/LabelCountRuby"
 
 
 
@@ -41,6 +43,7 @@ func _process(delta):
 	depth.text = "DEPTH: " + str(floor((pickaxe_normal.global_position.y) / 80))
 	label_count_gold.text = str(gold_number)
 	label_count_diamond.text = str(diamond_number)
+	label_count_ruby.text = str(ruby_number)
 	
 	if floor((pickaxe_normal.global_position.y) / 80) > highest_pickaxe_y:
 		highest_pickaxe_y = floor((pickaxe_normal.global_position.y) / 80)
@@ -73,6 +76,9 @@ func _on_area_2d_body_entered(body):
 	if name == "diam":
 		body.emit_signal("got_damage", linear_velocity.length(), pickaxe_normal)
 		
+	if name == "ruby":
+		body.emit_signal("got_damage", linear_velocity.length(), pickaxe_normal)
+		
 	if name == "bomb":
 		body.emit_signal("explode")
 		you_lost.visible = true
@@ -100,16 +106,16 @@ func loadData():
 			var max_depth = game_data.get("max_depth", 0)
 			var total_gold = game_data.get("total_gold", 0)
 			var total_diamonds = game_data.get("total_diamonds", 0)
-			
+			var total_rubies = game_data.get("total_rubies", 0)
 			# Zapisz dane, korzystając z uzyskanych wartości
-			save(highscore, max_depth, total_gold, total_diamonds)
+			save(highscore, max_depth, total_gold, total_diamonds, total_rubies)
 		else:
 			print("Nie udało się otworzyć pliku do odczytu.")
 	else:
 		print("Plik zapisu nie istnieje, używamy wartości domyślnych.")
-		save(0, 0, 0, 0)  # Użyj domyślnych wartości, jeśli plik nie istnieje
+		save(0, 0, 0, 0, 0)  # Użyj domyślnych wartości, jeśli plik nie istnieje
 
-func save(highscore, max_depth, total_gold, total_diamonds):
+func save(highscore, max_depth, total_gold, total_diamonds, total_rubies):
 	var game_data = {}
 	
 	# Sprawdzamy, czy nowe wartości są większe niż te istniejące i aktualizujemy dane
@@ -125,6 +131,7 @@ func save(highscore, max_depth, total_gold, total_diamonds):
 	
 	game_data["total_gold"] = total_gold + gold_number
 	game_data["total_diamonds"] = total_diamonds + diamond_number
+	game_data["total_rubies"] = total_rubies + ruby_number
 	
 	
 	# Zapisz dane do pliku
@@ -134,6 +141,5 @@ func save(highscore, max_depth, total_gold, total_diamonds):
 	if file.is_open():
 		file.store_var(game_data)
 		file.close()
-		print("Dane zapisane pomyślnie.")
 	else:
 		print("Nie udało się otworzyć pliku do zapisu.")
