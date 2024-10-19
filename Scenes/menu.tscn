@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ca4lepayx4oiy"]
+[gd_scene load_steps=14 format=3 uid="uid://ca4lepayx4oiy"]
 
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_8rc1s"]
 [ext_resource type="Texture2D" uid="uid://ijyv6o8koysu" path="res://Assets/graphics/backgrounds/menu background.png" id="1_f4gco"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bvbjayxhus5xu" path="res://Assets/graphics/icons/play icon.png" id="7_j5ebh"]
 [ext_resource type="Texture2D" uid="uid://dlc5ggx4w7ob" path="res://Assets/graphics/icons/stats icon.png" id="7_tk7gc"]
 [ext_resource type="Texture2D" uid="uid://dq87l3qq588hs" path="res://Assets/graphics/icons/pickaxes shop icon.png" id="8_6t20d"]
+[ext_resource type="Texture2D" uid="uid://cykcyoiggo8in" path="res://Assets/graphics/icons/GameModes icon.png" id="9_r00t4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfoug"]
 
@@ -98,9 +99,9 @@ stretch_mode = 5
 [node name="PickaxeShop" type="TextureButton" parent="Control/ColorRect"]
 layout_mode = 0
 offset_left = 758.0
-offset_top = 1038.0
+offset_top = 590.0
 offset_right = 1458.0
-offset_bottom = 1738.0
+offset_bottom = 1290.0
 scale = Vector2(0.42, 0.42)
 texture_normal = ExtResource("8_6t20d")
 texture_pressed = ExtResource("8_6t20d")
@@ -122,6 +123,19 @@ texture_hover = ExtResource("7_j5ebh")
 texture_disabled = ExtResource("7_j5ebh")
 texture_focused = ExtResource("7_j5ebh")
 script = ExtResource("6_ru343")
+
+[node name="GameModes" type="TextureButton" parent="Control/ColorRect"]
+offset_left = 758.0
+offset_top = 1038.0
+offset_right = 1458.0
+offset_bottom = 1738.0
+scale = Vector2(0.42, 0.42)
+texture_normal = ExtResource("9_r00t4")
+texture_pressed = ExtResource("9_r00t4")
+texture_hover = ExtResource("9_r00t4")
+texture_disabled = ExtResource("9_r00t4")
+texture_focused = ExtResource("9_r00t4")
+stretch_mode = 5
 
 [node name="Play2" type="Button" parent="."]
 visible = false
@@ -178,5 +192,6 @@ text = "PLAY"
 [connection signal="pressed" from="Control/ColorRect/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Control/ColorRect/Stats" to="." method="_on_stats_pressed"]
 [connection signal="pressed" from="Control/ColorRect/Play" to="Control/ColorRect/Play" method="_on_pressed"]
+[connection signal="pressed" from="Control/ColorRect/GameModes" to="." method="_on_game_modes_pressed"]
 [connection signal="pressed" from="Play2" to="Play2" method="_on_pressed"]
 [connection signal="pressed" from="Play3" to="Play3" method="_on_pressed"]

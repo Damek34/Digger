@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 signal add_point(number)
+signal load_result
 
 var gold_number : int
 var diamond_number : int
@@ -17,6 +18,8 @@ var throw_force = 1200  # Siła rzutu, dostosuj według potrzeb
 @onready var label_count_gold = $"../CanvasLayer2/GoldenOreBlock/LabelCountGold"
 @onready var label_count_diamond: Label = $"../CanvasLayer2/DiamondOreBlock/LabelCountDiamond"
 @onready var label_count_ruby: Label = $"../CanvasLayer2/RubyOreBlock/LabelCountRuby"
+@onready var result: Label = $"../CanvasLayer2/GameModeResults/Result"
+@onready var game_mode_results: TextureRect = $"../CanvasLayer2/GameModeResults"
 
 
 
@@ -81,9 +84,13 @@ func _on_area_2d_body_entered(body):
 		
 	if name == "bomb":
 		body.emit_signal("explode")
-		you_lost.visible = true
-		ok.visible = true
-		loadData()
+		if Globals.game_mode_number == 0:
+			you_lost.visible = true
+			ok.visible = true
+			loadData()
+		else:
+			game_mode_results.visible = true
+			_on_load_result()
 		get_tree().paused = true
 
 func _on_add_point(number):
@@ -143,3 +150,76 @@ func save(highscore, max_depth, total_gold, total_diamonds, total_rubies):
 		file.close()
 	else:
 		print("Nie udało się otworzyć pliku do zapisu.")
+
+
+func _on_load_result() -> void:
+	if Globals.game_mode_number == 1:
+		result.text = "Score: " + str(score_number)
+		
+		var highscore = 0  # Domyślny wynik
+
+		if FileAccess.file_exists(Globals.SAVE_BEST_SCORE_GAMEMODE):
+			var file_read = FileAccess.open(Globals.SAVE_BEST_SCORE_GAMEMODE, FileAccess.READ)
+			
+			if file_read.is_open():
+				var game_data = file_read.get_var()
+				file_read.close()
+				
+				# Pobieranie najlepszego wyniku
+				highscore = game_data.get("highscore", 0)
+		
+		# Jeśli nowy wynik jest wyższy, zapisz go
+		if score_number > highscore:
+			var file_write = FileAccess.open(Globals.SAVE_BEST_SCORE_GAMEMODE, FileAccess.WRITE)
+			
+			if file_write.is_open():
+				var game_data = {}
+				game_data["highscore"] = score_number
+				file_write.store_var(game_data)
+				file_write.close()
+				print("Nowy rekord zapisany: " + str(score_number))
+			else:
+				print("Nie udało się otworzyć pliku do zapisu.")
+		else:
+			print("Wynik nie jest wyższy niż dotychczasowy rekord.")
+			
+			
+			
+			
+	
+	if Globals.game_mode_number == 2:
+		result.text = "Max depth: " + str(highest_pickaxe_y)
+		
+		var highscore = 0  # Domyślny wynik
+
+		if FileAccess.file_exists(Globals.SAVE_DEEPEST_DEPTH_GAMEMODE):
+			var file_read = FileAccess.open(Globals.SAVE_DEEPEST_DEPTH_GAMEMODE, FileAccess.READ)
+			
+			if file_read.is_open():
+				var game_data = file_read.get_var()
+				file_read.close()
+				
+				# Pobieranie najlepszego wyniku
+				highscore = game_data.get("highscore", 0)
+		
+		# Jeśli nowy wynik jest wyższy, zapisz go
+		if highest_pickaxe_y > highscore:
+			var file_write = FileAccess.open(Globals.SAVE_DEEPEST_DEPTH_GAMEMODE, FileAccess.WRITE)
+			
+			if file_write.is_open():
+				var game_data = {}
+				game_data["highscore"] = highest_pickaxe_y
+				file_write.store_var(game_data)
+				file_write.close()
+				print("Nowy rekord zapisany: " + str(highest_pickaxe_y))
+			else:
+				print("Nie udało się otworzyć pliku do zapisu.")
+		else:
+			print("Wynik nie jest wyższy niż dotychczasowy rekord.")
+	
+	
+	
+	
+	
+	
+	get_tree().paused = true

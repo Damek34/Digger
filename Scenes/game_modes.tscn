@@ -1,0 +1,208 @@
+[gd_scene load_steps=9 format=3 uid="uid://cs0g3hgkuwe5k"]
+
+[ext_resource type="Script" path="res://Scripts/game_modes.gd" id="1_gmngm"]
+[ext_resource type="Texture2D" uid="uid://cidl7xl32bb0d" path="res://Assets/graphics/backgrounds/gamemodes background.png" id="2_1bm0i"]
+[ext_resource type="FontFile" uid="uid://d223nojg0mkop" path="res://Assets/fonts/good times rg.otf" id="3_47j14"]
+[ext_resource type="Texture2D" uid="uid://r7wvlju7fjyl" path="res://Assets/graphics/icons/X mark for back red.png" id="4_0egvh"]
+[ext_resource type="Texture2D" uid="uid://b7jhkaqgshgbt" path="res://Assets/graphics/icons/best score gamemode icon.png" id="5_fj2f2"]
+[ext_resource type="Texture2D" uid="uid://dks6med8ylffu" path="res://Assets/graphics/icons/max depth gamemode icon.png" id="6_chp74"]
+[ext_resource type="Texture2D" uid="uid://bjp1j2115uc04" path="res://Assets/textures/Stone_01_DIFF.png" id="7_g0vwh"]
+[ext_resource type="Texture2D" uid="uid://bvbjayxhus5xu" path="res://Assets/graphics/icons/play icon.png" id="8_qxvx5"]
+
+[node name="GameModes" type="Node2D"]
+script = ExtResource("1_gmngm")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1919.0
+texture = ExtResource("2_1bm0i")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+self_modulate = Color(1, 1, 1, 0.831373)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -8.0
+anchor_bottom = 8.0
+offset_top = 320.0
+offset_right = 1080.0
+offset_bottom = 1600.0
+color = Color(0, 0, 0, 0.745098)
+metadata/_edit_use_anchors_ = true
+
+[node name="GameModesText" type="Label" parent="Control/ColorRect"]
+layout_mode = 0
+offset_top = 174.0
+offset_right = 1080.0
+offset_bottom = 295.0
+theme_override_fonts/font = ExtResource("3_47j14")
+theme_override_font_sizes/font_size = 100
+text = "GAME MODES
+"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="TextureButton" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 940.0
+offset_right = 980.0
+offset_bottom = 40.0
+scale = Vector2(1.4, 1.4)
+texture_normal = ExtResource("4_0egvh")
+texture_pressed = ExtResource("4_0egvh")
+texture_hover = ExtResource("4_0egvh")
+texture_disabled = ExtResource("4_0egvh")
+texture_focused = ExtResource("4_0egvh")
+
+[node name="BestScoreGameMode" type="TextureButton" parent="Control/ColorRect"]
+layout_mode = 0
+offset_top = 380.0
+offset_right = 700.0
+offset_bottom = 1080.0
+scale = Vector2(0.42, 0.42)
+texture_normal = ExtResource("5_fj2f2")
+texture_pressed = ExtResource("5_fj2f2")
+texture_hover = ExtResource("5_fj2f2")
+texture_disabled = ExtResource("5_fj2f2")
+texture_focused = ExtResource("5_fj2f2")
+
+[node name="BestScore" type="Label" parent="Control/ColorRect/BestScoreGameMode"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.109977
+anchor_top = 1.94898
+anchor_right = 0.359977
+anchor_bottom = 2.26327
+offset_left = 96.8254
+offset_top = -733.333
+offset_right = 270.825
+offset_bottom = -756.333
+theme_override_fonts/font = ExtResource("3_47j14")
+theme_override_font_sizes/font_size = 80
+text = "BEST
+SCORE
+"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MaxDepthGameMode" type="TextureButton" parent="Control/ColorRect"]
+offset_left = 391.0
+offset_top = 380.0
+offset_right = 1091.0
+offset_bottom = 1080.0
+scale = Vector2(0.42, 0.42)
+texture_normal = ExtResource("6_chp74")
+texture_pressed = ExtResource("6_chp74")
+texture_hover = ExtResource("6_chp74")
+texture_disabled = ExtResource("6_chp74")
+texture_focused = ExtResource("6_chp74")
+
+[node name="MaxDepth" type="Label" parent="Control/ColorRect/MaxDepthGameMode"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.109977
+anchor_top = 1.94898
+anchor_right = 0.359977
+anchor_bottom = 2.26327
+offset_left = 96.8254
+offset_top = -733.333
+offset_right = 270.825
+offset_bottom = -756.333
+theme_override_fonts/font = ExtResource("3_47j14")
+theme_override_font_sizes/font_size = 80
+text = "MAX
+DEPTH"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectingBackground" type="TextureRect" parent="Control/ColorRect"]
+visible = false
+self_modulate = Color(0.305882, 0.305882, 0.305882, 1)
+z_index = 5
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = ExtResource("7_g0vwh")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="Control/ColorRect/SelectingBackground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.1125
+anchor_bottom = -0.1125
+offset_top = 348.0
+offset_right = 1080.0
+offset_bottom = 469.0
+theme_override_fonts/font = ExtResource("3_47j14")
+theme_override_font_sizes/font_size = 100
+text = "BEST SCORE"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Info" type="Label" parent="Control/ColorRect/SelectingBackground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.172396
+anchor_bottom = 0.276563
+offset_top = 174.0
+offset_right = 1080.0
+offset_bottom = 275.0
+theme_override_fonts/font = ExtResource("3_47j14")
+theme_override_font_sizes/font_size = 60
+text = "This mode is about achieving the highest possible result in 5 minutes"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Record" type="Label" parent="Control/ColorRect/SelectingBackground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.437298
+anchor_bottom = 0.437298
+offset_top = 682.388
+offset_right = 1080.0
+offset_bottom = 803.388
+theme_override_fonts/font = ExtResource("3_47j14")
+theme_override_font_sizes/font_size = 100
+text = "RECORD:"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Play" type="TextureButton" parent="Control/ColorRect/SelectingBackground"]
+offset_left = 294.0
+offset_top = 925.0
+offset_right = 994.0
+offset_bottom = 1625.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("8_qxvx5")
+texture_pressed = ExtResource("8_qxvx5")
+texture_hover = ExtResource("8_qxvx5")
+texture_disabled = ExtResource("8_qxvx5")
+texture_focused = ExtResource("8_qxvx5")
+
+[node name="BackFromSelecting" type="TextureButton" parent="Control/ColorRect/SelectingBackground"]
+offset_left = 940.0
+offset_right = 980.0
+offset_bottom = 40.0
+scale = Vector2(1.4, 1.4)
+texture_normal = ExtResource("4_0egvh")
+texture_pressed = ExtResource("4_0egvh")
+texture_hover = ExtResource("4_0egvh")
+texture_disabled = ExtResource("4_0egvh")
+texture_focused = ExtResource("4_0egvh")
+
+[connection signal="pressed" from="Control/ColorRect/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Control/ColorRect/BestScoreGameMode" to="." method="_on_best_score_game_mode_pressed"]
+[connection signal="pressed" from="Control/ColorRect/MaxDepthGameMode" to="." method="_on_max_depth_game_mode_pressed"]
+[connection signal="pressed" from="Control/ColorRect/SelectingBackground/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/ColorRect/SelectingBackground/BackFromSelecting" to="." method="_on_back_from_selecting_pressed"]

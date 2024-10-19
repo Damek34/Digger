@@ -9,6 +9,11 @@ extends Node2D
 @onready var golden_ore_block: Sprite2D = $CanvasLayer2/GoldenOreBlock
 @onready var ruby_ore_block: Sprite2D = $CanvasLayer2/RubyOreBlock
 @onready var diamond_ore_block: Sprite2D = $CanvasLayer2/DiamondOreBlock
+@onready var timer: Timer = $CanvasLayer2/Time/Timer
+@onready var time: Label = $CanvasLayer2/Time
+@onready var result: Label = $CanvasLayer2/GameModeResults/Result
+@onready var game_mode_results: TextureRect = $CanvasLayer2/GameModeResults
+@onready var ok_result: Button = $CanvasLayer2/GameModeResults/OKResult
 
 
 var blocks_x = [90, 270, 450, 630, 810, 990]
@@ -31,12 +36,13 @@ var gold_counter = 0
 var diamond_counter = 0
 var ruby_counter = 0
 
-var score_number = 0
 
+
+var remaining_time = 180
 
 func _ready():
 	highest_pickaxe_y = pickaxe.global_position.y
-	
+	ok_result.process_mode = Node.PROCESS_MODE_ALWAYS
 	if Globals.show_digged:
 		golden_ore_block.visible = true
 		diamond_ore_block.visible = true
@@ -45,6 +51,33 @@ func _ready():
 		golden_ore_block.visible = false
 		diamond_ore_block.visible = false
 		ruby_ore_block.visible = false
+		
+	if Globals.game_mode_number == 1 or Globals.game_mode_number == 2:
+		time.visible = true
+		timer.start(1)
+		update_timer_label()
+	else:
+		time.visible = false
+
+
+func update_timer_label():
+	var minutes = int(remaining_time / 60)  # Oblicz minuty
+	var seconds = remaining_time % 60  # Oblicz sekundy
+	
+	# Sformatuj tekst (np. "02:59")
+	var time_text = str(minutes).pad_zeros(2) + ":" + str(seconds).pad_zeros(2)
+	
+	# Aktualizacja tekstu w Label
+	time.text = "Time: " + time_text
+
+func _on_timer_timeout() -> void:
+	if remaining_time > 0:
+		remaining_time -= 1  # Zmniejszamy czas o 1 sekundę
+		update_timer_label()  # Aktualizujemy tekst
+	else:
+		timer.stop()  # Zatrzymaj timer, gdy czas dobiegnie końca
+		game_mode_results.visible = true
+		pickaxe.emit_signal("load_result")
 
 
 func _process(delta):
@@ -109,3 +142,8 @@ func _process(delta):
 func _on_home_pressed():
 	warning_texture_rect.visible = true
 	get_tree().paused = true
+
+
+func _on_ok_result_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
