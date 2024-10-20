@@ -38,3 +38,7 @@ func _on_stats_pressed():
 
 func _on_game_modes_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/game_modes.tscn")
+
+
+func _on_pickaxe_shop_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/storage.tscn")

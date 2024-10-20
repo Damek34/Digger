@@ -59,12 +59,6 @@ func _on_button_pressed():
 	else:
 		print("Nie udało się otworzyć pliku do zapisu.")
 	
-	
-	
-	
-	
-	
-	
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
 

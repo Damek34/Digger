@@ -125,6 +125,7 @@ texture_focused = ExtResource("7_j5ebh")
 script = ExtResource("6_ru343")
 
 [node name="GameModes" type="TextureButton" parent="Control/ColorRect"]
+layout_mode = 0
 offset_left = 758.0
 offset_top = 1038.0
 offset_right = 1458.0
@@ -191,6 +192,7 @@ text = "PLAY"
 
 [connection signal="pressed" from="Control/ColorRect/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Control/ColorRect/Stats" to="." method="_on_stats_pressed"]
+[connection signal="pressed" from="Control/ColorRect/PickaxeShop" to="." method="_on_pickaxe_shop_pressed"]
 [connection signal="pressed" from="Control/ColorRect/Play" to="Control/ColorRect/Play" method="_on_pressed"]
 [connection signal="pressed" from="Control/ColorRect/GameModes" to="." method="_on_game_modes_pressed"]
 [connection signal="pressed" from="Play2" to="Play2" method="_on_pressed"]
